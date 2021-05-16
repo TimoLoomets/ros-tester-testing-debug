@@ -7,5 +7,5 @@ services:
     volumes:
       - './host:/host'
       - './student:/student'
-      - './tester:/tester'
+      - './tester:/tester:ro'
 

@@ -1,0 +1,194 @@
+#!/bin/bash
+
+killall gzserver gzclient roscore -9 >/dev/null 2>&1
+
+cd ~
+DIRECTORY="iti0201-2021"
+
+if [ "$#" -lt 3 ]; then
+    echo "USAGE: robot_test [uni-id] [exercise_number] [map_number]"
+    echo "You can add git branch name with -b=[branch]"
+    echo "You can add teammate uni-id (if code is in that student's repository) -t=[teammate_uniid]"
+    echo "You can add team repository with -r=[repo_name]"
+    echo "You can use your SSH key if you specify --key"
+    echo "You can also add optional arguments of -w=[wait_time], -x=[x] and -y=[y], -Y=[yaw], --noise, --realmotors, --debug, --static"
+    exit 0
+fi
+
+git_user_name=$1
+exercise_number=$2
+map_number=$3
+
+ir_noise=0
+waiting_time=12
+
+yaw_start=0
+noise=0
+realmotors=0
+realsensors=0
+blind=0
+debug=0
+static=false
+branch=master
+key=0
+team=
+repo=$DIRECTORY
+
+for i in "$@"
+do
+case $i in
+    -t=*|--team=*)
+    team="${i#*=}"
+    shift # past argument=value
+    ;;
+    -r=*|--repo=*)
+    repo="${i#*=}"
+    shift # past argument=value
+    ;;
+    -b=*|--branch=*)
+    branch="${i#*=}"
+    shift # past argument=value
+    ;;
+    -i=*|--ir=*)
+    ir_noise="${i#*=}"
+    shift # past argument=value
+    ;;
+    -w=*|--wait=*)
+    waiting_time="${i#*=}"
+    shift # past argument=value
+    ;;
+    -x=*|--xstart=*)
+    x_start="${i#*=}"
+    shift # past argument=value
+    ;;
+    -y=*|--ystart=*)
+    y_start="${i#*=}"
+    shift # past argument=value
+    ;;
+    -Y=*|--yawstart=*)
+    yaw_start="${i#*=}"
+    shift # past argument=value
+    ;;
+    --noise)
+    noise=1
+    shift
+    ;;
+    --realmotors)
+    realmotors=1
+    shift
+    ;;
+    --realsensors)
+    realsensors=1
+    shift
+    ;;
+    --blind)
+    blind=1
+    shift
+    ;;
+    --debug)
+    debug=1
+    shift
+    ;;
+    --static)
+    static=true
+    shift
+    ;;
+    --key)
+    key=1
+    shift
+    ;;
+    --realism)
+    realmotors=1
+    noise=1
+    blind=1
+    echo "REALISM"
+    shift
+    ;;
+    --default)
+    DEFAULT=YES
+    shift # past argument with no value
+    ;;
+    *)
+          # unknown option
+    ;;
+esac
+done
+
+
+if [[ ! -z "$team" ]]; then
+    git_address="https://$git_user_name@gitlab.cs.ttu.ee/$team/$repo.git"
+    if [[ "$key" -eq 1 ]]; then
+        git_address="git@gitlab.cs.ttu.ee:$team/$repo.git"
+    fi
+else
+    git_address="https://$git_user_name@gitlab.cs.ttu.ee/$git_user_name/$repo.git"
+    if [[ "$key" -eq 1 ]]; then
+        git_address="git@gitlab.cs.ttu.ee:$git_user_name/$repo.git"
+    fi
+fi
+
+
+echo $git_address
+
+if [ -d "$DIRECTORY" ]; then
+    echo "Repository already exists. Updating.."
+    cd $DIRECTORY
+    git pull origin $branch
+    git checkout $branch
+else
+    echo "Repository doesn't exist yet. Creating one now..."
+    git clone -b $branch $git_address $DIRECTORY
+    cd $DIRECTORY
+fi
+git submodule update --init --remote --merge
+
+exercise_name=""
+directory_name=""
+
+if [ -d "$exercise_number" ]; then
+    cd $exercise_number
+else
+    echo "Your files do not contain the $exercise_number folder."
+    exit 1
+fi
+
+if ! [ -f "robot.py" ]; then
+    echo "Your directory $exercise_number folder does not contain the necessary robot.py file."
+    exit 1
+fi
+
+if [[ -z "$x_start" || -z "$y_start" ]]; then
+    echo "x and y not set"
+    if $static; then
+        map_number_static=""$map_number"_static"
+        map_name_static="$map_number_static.world"
+        map_name="$map_number.world"
+        map_number+="_static"
+        copy_path=~/catkin_ws/src/pibot_gazebo/worlds/$exercise_number/$map_name_static
+        touch "$copy_path"
+        cp ~/catkin_ws/src/pibot_gazebo/worlds/$exercise_number/$map_name "$copy_path"
+        uri="_static"
+        sed -i "s|\(<uri>model://iti0201_robot\)[^<>]*\(</uri>\)|\1${uri}\2|" $copy_path
+        sed -i "s|\(<name>iti0201_robot\)[^<>]*\(</name>\)|\1${uri}\2|" $copy_path
+        echo "Static grabber"
+    fi
+else
+    map_number+="_custom"
+fi
+
+echo "IR noise: $noise"
+echo "Real motors: $realmotors"
+echo "Blind: $blind"
+echo "Debug: $debug"
+echo "Real sensors: $realsensors"
+x-terminal-emulator -e roslaunch pibot_gazebo default.launch dir:=$exercise_number map:=$map_number noise:=$noise realmotors:=$realmotors realsensors:=$realsensors blind:=$blind debug:=$debug
+
+if [[ -z "$x_start" || -z "$y_start" ]]; then
+    echo "spawning model at default location"
+else
+    echo "spawning model at specified location"
+    x-terminal-emulator -e rosrun gazebo_ros spawn_model -file `rospack find pibot_description`/models/iti0201_robot/urdf/pibot.urdf -urdf -x "$x_start" -y "$y_start" -z 0 -Y "$yaw_start" -model pibot
+fi
+
+x-terminal-emulator -e script_launch ~/$DIRECTORY/$exercise_number $waiting_time
+

@@ -1,0 +1,48 @@
+{
+  "errors": [],
+  "testSuites": [
+    {
+      "endDate": 1576067839205,
+      "file": "",
+      "grade": 0,
+      "name": "SIM",
+      "passedCount": 0,
+      "startDate": 1576067839179,
+      "unitTests": [
+        {
+          "exceptionClass": "",
+          "exceptionMessage": "",
+          "groupsDependedUpon": [],
+          "methodsDependedUpon": [],
+          "name": "CPP_TopicTest",
+          "printExceptionMessage": false,
+          "printStackTrace": false,
+          "stackTrace": "",
+          "status": "COMPLETED",
+          "stderr": [],
+          "stdout": [],
+          "timeElapsed": 2.003,
+          "weight": 1
+        },
+        {
+          "exceptionClass": "",
+          "exceptionMessage": "",
+          "groupsDependedUpon": [],
+          "methodsDependedUpon": [],
+          "name": "CPP_ReachedWall",
+          "printExceptionMessage": false,
+          "printStackTrace": false,
+          "stackTrace": "",
+          "status": "COMPLETED",
+          "stderr": [],
+          "stdout": [],
+          "timeElapsed": 2.507,
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "type": "arete",
+  "version": "arete_2.0"
+}

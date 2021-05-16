@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pibot_gazebo</name>
+  <version>0.0.0</version>
+  <description>The pibot package</description>
+  <maintainer email="ingmar@todo.todo">ingmar</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_export_depend>gazebo_ros</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+
+  <build_depend>rostest</build_depend>
+  <exec_depend>rostest</exec_depend>
+  <test_depend>rostest</test_depend>
+  <test_depend>xacro</test_depend>
+  <test_depend>rosunit</test_depend>
+  <test_depend>roscpp</test_depend>
+
+  <export>
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/../pibot_description/models"/>
+  </export>
+</package>

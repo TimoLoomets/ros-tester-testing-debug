@@ -1,0 +1,399 @@
+.
+├── pibot_controls
+│   ├── CMakeLists.txt
+│   ├── PiBot.py
+│   ├── image_processor.py
+│   ├── install.sh
+│   ├── package.xml
+│   ├── robot_test
+│   ├── script_launch
+│   ├── update_files
+│   └── update_robots.sh
+├── pibot_description
+│   ├── CMakeLists.txt
+│   ├── launch
+│   │   ├── generate_cone_urdf.launch
+│   │   └── generate_urdf.launch
+│   ├── models
+│   │   ├── iti0201_robot
+│   │   │   ├── meshes
+│   │   │   │   ├── base_green.dae
+│   │   │   │   ├── pibot2_base.dae
+│   │   │   │   └── sketchup_dae_base.dae
+│   │   │   ├── model.config
+│   │   │   ├── model.sdf
+│   │   │   └── urdf
+│   │   │       ├── generate_pibot.urdf.xacro
+│   │   │       ├── manual.txt
+│   │   │       ├── pibot.urdf
+│   │   │       └── pibot_description.urdf.xacro
+│   │   ├── iti0201_robot_cone
+│   │   │   ├── meshes
+│   │   │   │   ├── base_green.dae
+│   │   │   │   └── sketchup_dae_base.dae
+│   │   │   ├── model.config
+│   │   │   └── urdf
+│   │   │       ├── generate_pibot.urdf.xacro
+│   │   │       ├── manual.txt
+│   │   │       ├── pibot.urdf
+│   │   │       └── pibot_description.urdf.xacro
+│   │   ├── iti0201_robot_static
+│   │   │   ├── meshes
+│   │   │   │   ├── base_green.dae
+│   │   │   │   ├── pibot2_base.dae
+│   │   │   │   └── sketchup_dae_base.dae
+│   │   │   ├── model.config
+│   │   │   ├── model.sdf
+│   │   │   └── urdf
+│   │   │       ├── generate_pibot.urdf.xacro
+│   │   │       ├── manual.txt
+│   │   │       ├── pibot.urdf
+│   │   │       └── pibot_description.urdf.xacro
+│   │   ├── labyrinth1
+│   │   │   ├── M1.dae
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── labyrinth2
+│   │   │   ├── M2_1.dae
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── labyrinth3
+│   │   │   ├── M2_2.dae
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── labyrinth4
+│   │   │   ├── M2_3.dae
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── labyrinth5
+│   │   │   ├── M2_4.dae
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── object
+│   │   │   ├── model.config
+│   │   │   ├── model.sdf
+│   │   │   └── robot_object.dae
+│   │   ├── racetrack
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── race_track.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack10
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack10.material
+│   │   │   │   └── textures
+│   │   │   │       ├── racetrack10-1.jpg
+│   │   │   │       └── racetrack10.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack11
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack11.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack11.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack12
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack12.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack12.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack13
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack13.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack13.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack14
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack14.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack14.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack15
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack15.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack15.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack16
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack16.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack16.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack17
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack17.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack17.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack2
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack2.material
+│   │   │   │   └── textures
+│   │   │   │       ├── racetrack2-2.jpg
+│   │   │   │       └── racetrack2.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack3
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack3.material
+│   │   │   │   └── textures
+│   │   │   │       ├── racetrack3-2.jpg
+│   │   │   │       └── racetrack3.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack4
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack4.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack4.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack5
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack5.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack5.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack6
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack6.material
+│   │   │   │   └── textures
+│   │   │   │       ├── racetrack6-1.jpg
+│   │   │   │       └── racetrack6.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack7
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack7.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack7.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack8
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack8.material
+│   │   │   │   └── textures
+│   │   │   │       ├── racetrack8-1.jpg
+│   │   │   │       └── racetrack8.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── racetrack9
+│   │   │   ├── materials
+│   │   │   │   ├── scripts
+│   │   │   │   │   └── racetrack9.material
+│   │   │   │   └── textures
+│   │   │   │       └── racetrack9.jpg
+│   │   │   ├── model.config
+│   │   │   └── model.sdf
+│   │   ├── sphere_blue
+│   │   │   ├── model.config
+│   │   │   ├── model.sdf
+│   │   │   └── sphere.dae
+│   │   └── sphere_red
+│   │       ├── model.config
+│   │       ├── model.sdf
+│   │       └── sphere.dae
+│   └── package.xml
+└── pibot_gazebo
+    ├── CMakeLists.txt
+    ├── grabber_plugin.cpp
+    ├── ir_plugin.cpp
+    ├── launch
+    │   ├── default.launch
+    │   ├── params.launch
+    │   └── position.launch
+    ├── package.xml
+    ├── scripts
+    │   ├── imu_script.py
+    │   ├── kill_gazebo.sh
+    │   └── line_sensor_script.py
+    ├── test
+    │   └── SIM
+    │       ├── cpp_simple.cpp
+    │       ├── cpp_simple.test
+    │       ├── simple.test
+    │       └── simple_test.py
+    ├── wheel_plugin.cpp
+    └── worlds
+        ├── L1
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   ├── 4_custom.world
+        │   ├── 5.world
+        │   ├── 5_custom.world
+        │   ├── 6.world
+        │   ├── 666.world
+        │   ├── 6_custom.world
+        │   ├── 7.world
+        │   └── 7_custom.world
+        ├── L2
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   ├── 4_custom.world
+        │   ├── 5.world
+        │   └── 5_custom.world
+        ├── L3
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   └── 4_custom.world
+        ├── M1
+        │   ├── 1.world
+        │   └── 1_custom.world
+        ├── M2
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   └── 4_custom.world
+        ├── M3
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   └── 4_custom.world
+        ├── M4
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   └── 4_custom.world
+        ├── O1
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 1_small.world
+        │   ├── 1_small_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 2_small.world
+        │   ├── 2_small_custom.world
+        │   ├── 3.world
+        │   ├── 4.world
+        │   └── 5.world
+        ├── O2
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   └── 4_custom.world
+        ├── O3
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   └── 3_custom.world
+        ├── O4
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   └── 3_custom.world
+        ├── S1
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 1_small.world
+        │   ├── 1_small_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   ├── 3_custom.world
+        │   ├── 4.world
+        │   ├── 4_custom.world
+        │   ├── 5.world
+        │   └── 5_custom.world
+        ├── S2
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   └── 3_custom.world
+        ├── S3
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   ├── 2_custom.world
+        │   ├── 3.world
+        │   └── 3_custom.world
+        ├── S4
+        │   ├── 1.world
+        │   ├── 1_custom.world
+        │   ├── 2.world
+        │   └── 2_custom.world
+        ├── SIM
+        │   ├── 1.world
+        │   └── 1_custom.world
+        └── default.world
+
+111 directories, 271 files
+.
+└── robot.py
+
+0 directories, 1 file
+Created file student/package.xml
+Created file student/CMakeLists.txt
+Successfully created files in /opt/ros_ws/src/created/student. Please adjust the values in package.xml.
+STARTED BUILDING
+DONE COPYING
+use_robot_py: True
+DONE USE_ROBOT CALC
+USE_ROBOT_PY_FILE True
+/opt/ros_ws/src/tester/pibot_controls
+student /opt/ros_ws/src/student/robot.py

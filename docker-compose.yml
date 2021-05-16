@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ros_tester:
+    container_name: ros_tester
+    deploy:
+      resources:
+        limits: 
+          memory: 2000M
+        reservations:
+          memory: 2000M
+    image: automatedtestingservice/ros-tester
+    volumes:
+      - './host:/host'
+      - './student:/student'
+      - './tester:/tester'
+    command: tail -F anything

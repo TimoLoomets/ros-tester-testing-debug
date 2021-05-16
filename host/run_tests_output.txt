@@ -1,0 +1,53 @@
+Scanning dependencies of target clean_test_results_pibot_gazebo
+Scanning dependencies of target gtest
+[ 25%] Building CXX object gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+Removing test result files from '/opt/ros_ws/build/test_results/pibot_gazebo'
+[ 25%] Built target clean_test_results_pibot_gazebo
+[ 50%] Linking CXX shared library ../../lib/libgtest.so
+[ 50%] Built target gtest
+Scanning dependencies of target cpp_simple
+[ 75%] Building CXX object tester/pibot_gazebo/CMakeFiles/cpp_simple.dir/test/SIM/cpp_simple.cpp.o
+[100%] Linking CXX executable /opt/ros_ws/devel/lib/pibot_gazebo/cpp_simple
+[100%] Built target cpp_simple
+Scanning dependencies of target tests
+[100%] Built target tests
+Scanning dependencies of target _run_tests_pibot_gazebo_rostest_test_SIM_cpp_simple.test
+[ INFO] [1621204035.526660377]: Finished loading Gazebo ROS API Plugin.
+[ INFO] [1621204035.528855177]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+... logging to /root/.ros/log/rostest-f465fbdc5db2-803.log
+[ROSUNIT] Outputting test results to /opt/ros_ws/build/test_results/pibot_gazebo/rostest-test_SIM_cpp_simple.xml
+[Testcase: testcpp_simple] ... ok
+
+[ROSTEST]-----------------------------------------------------------------------
+
+[pibot_gazebo.rosunit-cpp_simple/CPP_TopicTest][passed]
+[pibot_gazebo.rosunit-cpp_simple/CPP_ReachedWall][passed]
+
+SUMMARY
+ * RESULT: SUCCESS
+ * TESTS: 2
+ * ERRORS: 0
+ * FAILURES: 0
+
+rostest log file is in /root/.ros/log/rostest-f465fbdc5db2-803.log
+-- run_tests.py: execute commands
+  /usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/opt/ros_ws/src/tester/pibot_gazebo --package=pibot_gazebo --results-filename test_SIM_cpp_simple.xml --results-base-dir "/opt/ros_ws/build/test_results" /opt/ros_ws/src/tester/pibot_gazebo/test/SIM/cpp_simple.test 
+-- run_tests.py: verify result "/opt/ros_ws/build/test_results/pibot_gazebo/rostest-test_SIM_cpp_simple.xml"
+[100%] Built target _run_tests_pibot_gazebo_rostest_test_SIM_cpp_simple.test
+Scanning dependencies of target _run_tests_pibot_gazebo_rostest
+[100%] Built target _run_tests_pibot_gazebo_rostest
+Scanning dependencies of target _run_tests_pibot_gazebo
+[100%] Built target _run_tests_pibot_gazebo
+Scanning dependencies of target run_tests
+[100%] Built target run_tests
+Base path: /opt/ros_ws
+Source space: /opt/ros_ws/src
+Build space: /opt/ros_ws/build
+Devel space: /opt/ros_ws/devel
+Install space: /opt/ros_ws/install
+####
+#### Running command: "make cmake_check_build_system" in "/opt/ros_ws/build"
+####
+####
+#### Running command: "make run_tests -j32 -l32" in "/opt/ros_ws/build"
+####

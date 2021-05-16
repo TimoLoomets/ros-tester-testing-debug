@@ -1,0 +1,11 @@
+STARTED TESTING
+Processing file: ./build/test_results/pibot_gazebo/rosunit-cpp_simple.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="0" disabled="0" errors="0" time="4.51" timestamp="2021-05-16T22:27:14" name="AllTests">
+  <testsuite name="SIM" tests="2" failures="0" disabled="0" errors="0" time="4.51" timestamp="2021-05-16T22:27:14">
+    <testcase name="CPP_TopicTest" status="run" result="completed" time="2.003" timestamp="2021-05-16T22:27:14" classname="SIM" />
+    <testcase name="CPP_ReachedWall" status="run" result="completed" time="2.507" timestamp="2021-05-16T22:27:16" classname="SIM" />
+  </testsuite>
+</testsuites>
+
+BAG IMAGE TOPICS: [('/robot/camera/image_raw', TopicTuple(msg_type='sensor_msgs/Image', message_count=15, connections=1, frequency=9.901988280899566))]

@@ -1,0 +1,42 @@
+[1;33mWarning [parser_urdf.cc:3037][0m urdf2sdf: revolute joint [grabber_right_arm_joint_to_grabber_mount] with limits: lowStop[0] > highStop[-0.7], switching the two.
+topic_0: /clock rosgraph_msgs/Clock
+topic_1: /gazebo/link_states gazebo_msgs/LinkStates
+topic_2: /gazebo/model_states gazebo_msgs/ModelStates
+topic_3: /gazebo/parameter_descriptions dynamic_reconfigure/ConfigDescription
+topic_4: /gazebo/parameter_updates dynamic_reconfigure/Config
+topic_5: /gazebo/performance_metrics gazebo_msgs/PerformanceMetrics
+topic_6: /robot/grabber/close_cmd std_msgs/Float32
+topic_7: /robot/grabber/height_cmd std_msgs/Float32
+topic_8: /robot/imu/angle std_msgs/Float32
+topic_9: /robot/wheel/left/vel_cmd std_msgs/Float32
+topic_10: /robot/wheel/right/vel_cmd std_msgs/Float32
+topic_11: /rosout rosgraph_msgs/Log
+LOC: 0 0
+LOC: 0 0
+LOC: 0 0
+LOC: 0 0
+LOC: 0 0
+LOC: 1.55005e-06 -7.18551e-06
+LOC: 1.85956e-06 -7.05331e-06
+LOC: 1.02816e-05 0.0159102
+LOC: 3.60863e-05 0.0608083
+LOC: 5.6376e-05 0.106006
+LOC: 7.49149e-05 0.151222
+LOC: 9.14924e-05 0.194609
+LOC: 0.000107221 0.240268
+LOC: 0.00012133 0.285927
+LOC: 0.00013426 0.330674
+LOC: 0.000146785 0.375883
+LOC: 0.000158486 0.421548
+LOC: 0.000169076 0.466746
+LOC: 0.000777915 0.508161
+LOC: 0.0030602 0.545355
+LOC: 0.00201198 0.58505
+LOC: 0.00163525 0.625903
+LOC: 0.00354533 0.666133
+LOC: 0.00604945 0.697369
+LOC: 0.00365273 0.727591
+LOC: 0.00487494 0.755831
+ARRIVED
+terminate called without an active exception
+Aborted (core dumped)

@@ -1,0 +1,21 @@
+<launch>
+  <include file="$(find pibot_description)/launch/generate_urdf.launch"/>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <arg name="dir"/>
+  <arg name="map"/>
+  <arg name="noise" default="-1"/>
+  <arg name="realmotors" default="-1"/>
+  <arg name="debug" default="-1"/>
+  <arg name="blind" default="-1"/>
+  <param name="/realmotors" value="$(arg realmotors)" />
+  <param name="/noise" value="$(arg noise)" />
+  <param name="/blind" value="$(arg blind)" />
+  <param name="/debug" value="$(arg debug)" />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find pibot_gazebo)/worlds/$(arg dir)/$(arg map).world"/>
+    <arg name="gui" value="false"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+  <node name="line_sensor_script" pkg="pibot_gazebo" type="line_sensor_script.py" output="screen"/>
+  <node name="imu_script" pkg="pibot_gazebo" type="imu_script.py" output="screen"/>
+</launch>
